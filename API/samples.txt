@@ -1,0 +1,35 @@
+======================================================= 
+<%@language=Jscript%><%
+   var objSrvHTTP;  
+   var objXMLDocument;  
+   objSrvHTTP = Server.CreateObject ("Msxml2.ServerXMLHTTP.6.0");  
+   objXMLDocument = Server.CreateObject ("Msxml2.DOMDocument.6.0");  
+  
+   objXMLDocument.async= false;  
+   objXMLDocument.loadXML ("<msg><id>1</id></msg>");  
+  
+   objSrvHTTP.open ("POST","http://someotherserver/respond.asp",false);  
+   objSrvHTTP.send (objXMLDocument);  
+   Response.ContentType = "text/xml";  
+   Response.Write (objSrvHTTP.responseXML.xml);  
+%>
+=======================================================
+<%@language=Jscript%><%  
+   var objSrvHTTP;  
+   var objXMLSend;  
+   var objXMLReceive;  
+   objSrvHTTP = Server.CreateObject("Msxml2.ServerXMLHTTP.6.0");  
+   objXMLSend = Server.CreateObject("Msxml2.DOMDocument.6.0");  
+   objXMLReceive = Server.CreateObject("Msxml2.DOMDocument.6.0");  
+  
+   objXMLSend.async = false;  
+   objXMLSend.loadXML ("<msg><id>2</id></msg>");  
+  
+   objSrvHTTP.open ("POST","http://someotherserver/respond.asp",false);  
+   objSrvHTTP.send (objXMLSend);  
+   objXMLReceive = objSrvHTTP.responseXML;  
+   Response.ContentType = "text/xml";  
+   Response.Write (objXMLReceive.xml);  
+%>
+
+======================================================
