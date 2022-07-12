@@ -1,0 +1,1 @@
+total = input("How many")
