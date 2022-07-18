@@ -16,14 +16,15 @@ L1 = [
 
 def Get(lstL):
     x1 = lstL[0][0]
+    x2 = lstL[0][0]
+    print(x1)
     for j in L1:
-        if j[0] < x1:
-            min = j[0]
+        if int(j[0]) < int(x1):
+            x1 = j[0]
             Lmin = [j]
-        if j[0] > x1:
-            max = j[0]
+        if int(j[0]) > int(x2):
+            x2 = j[0]
             Lmax = [j]
     print(f'Minimum: {Lmin} and Maximum: {Lmax}')
 #===================================================================
 Get(L1)
-#Minimum: [['200', 'user8', 'ZPPOILKJH']] and Maximum: [['897', 'user1', 'XYPPOIJHS']]
